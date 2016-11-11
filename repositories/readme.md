@@ -25,3 +25,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## Service vs repository layers
+Repositories act just as gateways to your data storage (sql database, xml file etc.) while services usually implement some business rules on your data before sending the data to be saved in the database via a repository.

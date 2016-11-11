@@ -20,4 +20,13 @@ class GenreRepository extends Repository
     {
         return Genre::class;
     }
+    
+    public function dummyData()
+    {
+        for($i = 0; $i <10; $i++){
+            $this->create([
+                'name' => 'jazz ' . $i 
+            ]);
+        }
+    }
 }

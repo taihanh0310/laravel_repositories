@@ -8,25 +8,19 @@
 
 namespace App\Repositories;
 use App\Repositories\Repository;
-use App\Album;
+use App\Product;
+
 /**
- * Description of AlbumRepository
+ * Description of ProductRepository
  *
  * @author nthanh
  */
-class AlbumRepository extends Repository
+class ProductRepository extends Repository
 {
     public function model()
     {
-        return Album::class;
+        return Product::class;
     }
-    
-    public function dummyData()
-    {
-        for($i = 0; $i <10; $i++){
-            $this->create([
-                'name' => 'jazz ' . $i 
-            ]);
-        }
-    }
+
+//put your code here
 }

@@ -30,4 +30,8 @@ class AlbumRepository extends Repository
             ]);
         }
     }
+
+    public function showDetail($id){
+        return $this->find($id);
+    }
 }

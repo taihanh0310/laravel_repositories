@@ -20,6 +20,11 @@ class GenreRepository extends Repository
     {
         return Genre::class;
     }
+
+    public function fetchListGenre()
+    {
+        return $this->all();
+    }
     
     public function dummyData()
     {

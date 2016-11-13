@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd($this->storeSev->dummnyData());
+        //dd($this->storeSev->dummnyData());
         //return view('home');
     }
 }

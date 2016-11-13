@@ -26,6 +26,14 @@ class StoreMusicService
         $this->genreRepos = $gen;
     }
 
+    public function albumDetail($id){
+        return $this->albumRepos->showDetail($id);
+    }
+
+    public function fetchListGenre(){
+        return $this->genreRepos->fetchListGenre();
+    }
+
     public function dummnyData(){
     	$this->genreRepos->dummyData();
     	$this->albumRepos->dummyData();

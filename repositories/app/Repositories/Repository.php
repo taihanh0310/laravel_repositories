@@ -8,8 +8,9 @@
 
 namespace App\Repositories;
 use App\Interfaces\RepositoryInterface;
-use Illuminate\Support\Facades\App;
+use Illuminate\Contracts\Container\Container as App;
 use App\Repositories\RepositoryException;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Description of Repository

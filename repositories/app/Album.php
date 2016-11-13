@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Album extends Model
 {
-    protected $table = "users";
+    protected $table = "albums";
+    protected $fillable = [
+        'title',
+        'genre_id'
+    ];
 }

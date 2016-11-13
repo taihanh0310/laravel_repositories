@@ -25,4 +25,9 @@ class StoreMusicService
         $this->albumRepos = $al;
         $this->genreRepos = $gen;
     }
+
+    public function dummnyData(){
+    	$this->genreRepos->dummyData();
+    	$this->albumRepos->dummyData();
+    }
 }

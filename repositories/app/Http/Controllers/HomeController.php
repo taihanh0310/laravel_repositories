@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\StoreMusicService;
 
 class HomeController extends Controller
 {
+    private $storeSev;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(StoreMusicService $storeSev)
     {
-        $this->middleware('auth');
+        $this->storeSev = $storeSev;
+//        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        dd($this->storeSev->dummnyData());
+        //return view('home');
     }
 }

@@ -25,7 +25,8 @@ class AlbumRepository extends Repository
     {
         for($i = 0; $i <10; $i++){
             $this->create([
-                'name' => 'jazz ' . $i 
+                'title' => 'nhan san ' . $i,
+                'genre_id' => $i 
             ]);
         }
     }

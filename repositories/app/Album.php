@@ -4,6 +4,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Genre;
 
 class Album extends Model
 {
@@ -12,4 +13,8 @@ class Album extends Model
         'title',
         'genre_id'
     ];
+    
+    public function genre(){
+        return $this->belongsTo(Genre::class);
+    }
 }

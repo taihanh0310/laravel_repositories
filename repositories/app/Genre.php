@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Album;
 
 class Genre extends Model
 {
@@ -10,4 +11,9 @@ class Genre extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function albums()
+    {
+    	return $this->hasMany(Album::class, 'genre_id', 'id');
+    }
 }

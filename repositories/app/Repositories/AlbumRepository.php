@@ -23,7 +23,7 @@ class AlbumRepository extends Repository
     
     public function dummyData()
     {
-        for($i = 0; $i <10; $i++){
+        for($i = 1; $i <10; $i++){
             $this->create([
                 'title' => 'nhan san ' . $i,
                 'genre_id' => $i 

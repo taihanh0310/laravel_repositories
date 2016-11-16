@@ -29,3 +29,7 @@ Route::get('/store/browse/{genre}', [
 
 Route::resource('manager', 'StoreManagerController');
 
+Route::get('/addProduct/{productId}', 'CartController@addItem');
+Route::get('/removeItem/{productId}', 'CartController@removeItem');
+Route::get('/cart', 'CartController@showCart');
+

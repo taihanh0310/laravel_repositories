@@ -5,16 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Album;
 
-class Genre extends Model
+class Artist extends Model
 {
-    protected $table = "genres";
+    protected $table = "artists";
+    
     protected $fillable = [
-        'name',
-        'decscription'
+        'name'
     ];
-
+    
     public function albums()
     {
-    	return $this->hasMany(Album::class, 'genre_id', 'id');
+        return $this->hasMany(Album::class, 'artist_id', 'id');
     }
 }

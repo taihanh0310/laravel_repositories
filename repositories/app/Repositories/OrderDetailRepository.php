@@ -8,18 +8,17 @@
 
 namespace App\Repositories;
 use App\Repositories\Repository;
-use App\Product;
-
+use App\OrderDetail;
 /**
- * Description of ProductRepository
+ * Description of OrderDetailRepository
  *
  * @author nthanh
  */
-class ProductRepository extends Repository
+class OrderDetailRepository extends Repository
 {
     public function model()
     {
-        return Product::class;
+        return OrderDetail::class;
     }
 
 //put your code here

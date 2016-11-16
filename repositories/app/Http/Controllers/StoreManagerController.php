@@ -5,16 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\StoreMusicService;
 
-class StoreController extends Controller
+class StoreManagerController extends Controller
 {
     private $storeSev;
 
     public function __construct(StoreMusicService $storeSev)
     {
         $this->storeSev = $storeSev;
-//        $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,15 +20,8 @@ class StoreController extends Controller
      */
     public function index()
     {
-       // $this->storeSev->dummnyData();
-        $data = $this->storeSev->fetchListGenre();
-        return view('store.index', compact('data'));
-    }
-
-    public function browse($genre = "genre"){
-        $genreDatas = $this->storeSev->getBrowse($genre);
-        return view('store.browse', compact('genreDatas'));
-
+        $albums = $this->storeSev->fetchListAlbum();
+        return view('manager.index', compact('albums'));
     }
 
     /**
@@ -62,8 +53,7 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $detail = $this->storeSev->albumDetail($id);
-        return view('store.show', compact('detail'));
+        //
     }
 
     /**
@@ -74,7 +64,8 @@ class StoreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $datas = $this->storeSev->editAlbum($id);
+        dd($datas);
     }
 
     /**

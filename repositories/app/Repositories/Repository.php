@@ -47,6 +47,8 @@ abstract class Repository implements RepositoryInterface
      * @return mixed
      */
     public function all($columns = array('*')) {
+
+        $this->newQuery()->eagerLoadRelations();
         return $this->model->get($columns);
     }
     
@@ -82,6 +84,7 @@ abstract class Repository implements RepositoryInterface
      * @return mixed
      */
     public function find($id, $columns = array('*')) {
+        $this->newQuery()->eagerLoadRelations();
         return $this->model->find($id, $columns);
     }
     
@@ -92,7 +95,35 @@ abstract class Repository implements RepositoryInterface
      * @return mixed
      */
     public function findBy($attribute, $value, $columns = array('*')) {
+        $this->newQuery()->eagerLoadRelations();
         return $this->model->where($attribute, '=', $value)->first($columns);
     }
 
+    public function with($relations) {
+    if (is_string($relations)) $relations = func_get_args();
+
+    $this->with = $relations;
+
+    return $this;
+}
+
+    protected function eagerLoadRelations() {
+        if(isset($this->with)) {
+            foreach ($this->with as $relation) {
+                $this->model->with($relation);
+            }
+    }
+
+    return $this;
+}
+
+    public function newQuery(){
+        $this->model = $this->model->newQuery();
+        return $this;
+    }
+
+    protected function query()
+    {
+        return $this->model->newQuery()->with($this->with);
+    }
 }

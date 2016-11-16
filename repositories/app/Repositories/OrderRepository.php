@@ -7,13 +7,17 @@
  */
 
 namespace App\Repositories;
-
+use App\Order;
+use App\Repositories\Repository;
 /**
- * Description of StoreRepository
+ * Description of OrderRepository
  *
  * @author nthanh
  */
-class StoreRepository
+class OrderRepository extends Repository
 {
-    //put your code here
+    public function model()
+    {
+        return Order::class;
+    }
 }

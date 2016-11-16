@@ -19,4 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('store', 'StoreController');
-Route::resource('store', 'StoreController');
+
+Route::get('/store/browse/{genre}', [
+    'as' => 'store.browse', 
+    'uses' => 'StoreController@browse'
+]);
+
+// admin
+
+Route::resource('manager', 'StoreManagerController');
+

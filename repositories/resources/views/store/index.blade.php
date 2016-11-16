@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <ul>
                         @foreach($data as $genre)
-                        <li> <a href="{{ route('store.genre') }}">{{ $genre->name }} </a></li>
+                        <li> <a href="{{ route('store.browse',['genre' => $genre->name]) }}">{{ $genre->name }} </a></li>
                         @endforeach
                     </ul>
                 </div>

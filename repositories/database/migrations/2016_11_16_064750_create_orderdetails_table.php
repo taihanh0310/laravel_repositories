@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlbumsTable extends Migration
+class CreateOrderdetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateAlbumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('albums', function (Blueprint $table) {
+        Schema::create('orderdetails', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->nullable();
-            $table->integer('genre_id');
-            $table->integer('artist_id');
-            $table->decimal('price', 10, 2);
-            $table->string('album_art_url')->default('placeholder.gif');
+            $table->integer('order_id');
+            $table->integer('album_id');
+            $table->integer('quantity')->default(0);
+            $table->decimal('unit_price', 10, 2);
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateAlbumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('albums');
+        Schema::dropIfExists('orderdetails');
     }
 }

@@ -23,15 +23,112 @@ class AlbumRepository extends Repository
     
     public function dummyData()
     {
-        for($i = 1; $i <10; $i++){
+        $data = [
+            [
+                'id' => '1', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '2', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '3', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '4', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '5', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '6', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            
+            [
+                'id' => '7', 
+                'artist_id' => '2',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '8', 
+                'artist_id' => '2',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '9', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '10', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '11', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+            [
+                'id' => '12', 
+                'artist_id' => '1',
+                'genre_id' => '1',
+                'title' => 'For Those About To Rock We Salute You',
+                'price' => '8.99'
+            ],
+        ];
+        
+        foreach($data as $art)
+        {
             $this->create([
-                'title' => 'nhan san ' . $i,
-                'genre_id' => $i 
+                'id' => $art['id'],
+                'artist_id' => $art['artist_id'],
+                'genre_id' => $art['genre_id'],
+                'title' => $art['title'],
+                'price' => $art['price']
             ]);
         }
     }
 
     public function showDetail($id){
         return $this->find($id);
+    }
+    
+    public function fetchListAlbum($condition = null)
+    {
+        return $this->with('genre','artist')->all();
     }
 }

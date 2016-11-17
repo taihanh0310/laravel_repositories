@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return redirect(route('store.index'));
+    //return redirect(route('store.index'));
+    return view('/welcome');
 });
 
 Auth::routes();

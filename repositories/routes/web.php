@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('store.index'));
 });
 
 Auth::routes();
@@ -31,5 +31,8 @@ Route::resource('manager', 'StoreManagerController');
 
 Route::get('/addProduct/{productId}', 'CartController@addItem');
 Route::get('/removeItem/{productId}', 'CartController@removeItem');
-Route::get('/cart', 'CartController@showCart');
+Route::get('/cart',[
+	'as' => 'cart.list',
+	'uses' => 'CartController@showCart'
+]);
 

@@ -31,7 +31,8 @@ class StoreManagerController extends Controller
      */
     public function create()
     {
-        //
+        $data = "";
+        return view('manager.create', compact('datas'));
     }
 
     /**
@@ -42,7 +43,7 @@ class StoreManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('manager.index');
     }
 
     /**
@@ -53,7 +54,8 @@ class StoreManagerController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = $this->storeSev->editAlbum($id);
+        return view('manager.show', compact('datas'));
     }
 
     /**
@@ -65,7 +67,7 @@ class StoreManagerController extends Controller
     public function edit($id)
     {
         $datas = $this->storeSev->editAlbum($id);
-        dd($datas);
+        return view('manager.edit', compact('datas'));
     }
 
     /**
@@ -77,7 +79,7 @@ class StoreManagerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect()->route('manager.show', ['id' => $id]);
     }
 
     /**
@@ -88,6 +90,7 @@ class StoreManagerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $datas = $this->storeSev->deleteAlbum($id);
+        return redirect()->route('manager.index');
     }
 }

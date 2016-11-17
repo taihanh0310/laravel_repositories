@@ -124,7 +124,7 @@ class AlbumRepository extends Repository
     }
 
     public function showDetail($id){
-        return $this->find($id);
+        return $this->with('genre','artist')->find($id);
     }
     
     public function fetchListAlbum($condition = null)

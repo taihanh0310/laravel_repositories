@@ -82,7 +82,9 @@
                 </div>
             </div>
         </nav>
-
+        <!-- errors message and success message -->
+        @include('errors.list')
+                <!-- end errors messge and success message -->
         @yield('content')
     </div>
 

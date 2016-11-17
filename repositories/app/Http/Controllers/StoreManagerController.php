@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\StoreMusicService;
 use App\Http\Controllers\AdminController;
+use App\Http\Requests\StoreAlbumRequest;
+use App\Conditions\AdminAlbumCondition;
 
 class StoreManagerController extends AdminController
 {
@@ -20,9 +22,12 @@ class StoreManagerController extends AdminController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $albums = $this->storeSev->fetchListAlbum();
+        $condition = new AdminAlbumCondition();
+        $condition->setAttributes($request->all());
+        
+        $albums = $this->storeSev->fetchListAlbum($condition);
         return view('manager.index', compact('albums'));
     }
 
@@ -33,7 +38,8 @@ class StoreManagerController extends AdminController
      */
     public function create()
     {
-        $data = "";
+        $datas = $this->storeSev->createAlbum();
+        
         return view('manager.create', compact('datas'));
     }
 
@@ -43,9 +49,13 @@ class StoreManagerController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAlbumRequest $request)
     {
-        return redirect()->route('manager.index');
+        $data = $request->except(['btn_submit', '_token']);
+        $result = $this->storeSev->storeAlbum($data);
+        if($result){
+            return redirect()->route('manager.index');
+        }
     }
 
     /**
@@ -81,7 +91,11 @@ class StoreManagerController extends AdminController
      */
     public function update(Request $request, $id)
     {
-        return redirect()->route('manager.show', ['id' => $id]);
+        $data = $request->except(['btn_submit', '_token']);
+        $result = $this->storeSev->updateAlbum($id, $data);
+        if($result){
+            return redirect()->route('manager.show', ['id' => $id]);
+        }
     }
 
     /**

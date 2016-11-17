@@ -35,6 +35,16 @@ class StoreMusicService
         return $this->albumRepos->showDetail($id);
     }
     
+    public function createAlbum(){
+        $genres = $this->fetchListGenre();
+        $artists = $this->fetchListArtist();
+        return compact('genres','artists');
+    }
+    
+    public function storeAlbum($data){
+        return $this->albumRepos->storeAlbum($data);
+    }
+
     public function editAlbum($id)
     {
         $album = $this->albumDetail($id);
@@ -42,6 +52,11 @@ class StoreMusicService
         $artists = $this->fetchListArtist();
         
         return compact('album','genres','artists');
+    }
+    
+    public function updateAlbum($id, $data)
+    {
+        return $this->albumRepos->updateAlbum($id, $data);
     }
 
     public function fetchListGenre(){
@@ -53,7 +68,7 @@ class StoreMusicService
     }
 
         public function fetchListAlbum($condition = null){
-        return $this->albumRepos->fetchListAlbum();
+        return $this->albumRepos->fetchListAlbum($condition);
     }
 
     public function getBrowse($genre_name){

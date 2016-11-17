@@ -131,4 +131,13 @@ class AlbumRepository extends Repository
     {
         return $this->with('genre','artist')->all();
     }
+    
+    public function updateAlbum($id, $data)
+    {
+        return $this->update($data, $id);
+    }
+    
+    public function storeAlbum($data){
+        return $this->create($data);
+    }
 }

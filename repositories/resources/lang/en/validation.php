@@ -96,8 +96,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'title' => [
+            'required' => 'Tiêu đề album không được để trống',
+        ],
+        'price' => [
+            'required' => 'Giá của album không được để trống!',
         ],
     ],
 

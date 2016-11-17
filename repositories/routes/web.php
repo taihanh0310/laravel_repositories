@@ -28,9 +28,21 @@ Route::get('/store/browse/{genre}', [
 // admin
 
 Route::resource('manager', 'StoreManagerController');
+Route::post('/manager/{album}', [
+    'as' => 'manager.update', 
+    'uses' => 'StoreManagerController@update'
+]);
 
-Route::get('/addProduct/{productId}', 'CartController@addItem');
-Route::get('/removeItem/{productId}', 'CartController@removeItem');
+Route::post('/addProduct/{productId}', [
+	'as' => 'cart.add',
+	'uses' => 'CartController@addItem'
+]);
+
+Route::post('/removeItem/{productId}', [
+	'as' => 'cart.remove',
+	'uses' => 'CartController@removeItem'
+]);
+
 Route::get('/cart',[
 	'as' => 'cart.list',
 	'uses' => 'CartController@showCart'

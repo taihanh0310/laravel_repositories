@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\StoreMusicService;
+use App\Http\Controllers\AdminController;
 
-class StoreManagerController extends Controller
+class StoreManagerController extends AdminController
 {
     private $storeSev;
 
     public function __construct(StoreMusicService $storeSev)
     {
+        parent::__construct();
         $this->storeSev = $storeSev;
     }
     /**

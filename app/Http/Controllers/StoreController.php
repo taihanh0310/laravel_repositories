@@ -22,7 +22,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $this->storeSev->dummnyData();
+        // $this->storeSev->dummnyData();
         $data = $this->storeSev->fetchListGenre();
         return view('store.index', compact('data'));
     }

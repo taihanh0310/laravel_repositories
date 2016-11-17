@@ -17,6 +17,7 @@ class CreateTableCartsItem extends Migration
             $table->increments('id');
             $table->integer('cart_id');
             $table->integer('album_id');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

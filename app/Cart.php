@@ -22,4 +22,16 @@ class Cart extends Model
         return $this->hasMany(CartItem::class, 'cart_id', 'id');
     }
 
+    public function getTotalPrice()
+    {
+        $items = $this->cartItems;
+        $total= 0;
+
+        foreach($items as $item){
+            $total+=$item->album->price;
+        }
+
+        return $total;
+    }
+
 }

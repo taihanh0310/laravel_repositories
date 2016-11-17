@@ -13,13 +13,14 @@
                 @foreach($item as $album)
                 <div class="col-sm-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
+                        <img src="{{ $album->getAlbumUrl() }}" alt="{{ $album->title }}">
                         <div class="caption">
                             <h4 class="pull-right">${{ $album->price }}</h4>
                             <h4><a href="{{ route('store.show',$album->id) }}">{{ $album->title }}</a>
                             </h4>
                             <p class="text-center">
                                 <form action="{{ route('cart.add',['id' => $album->id]) }}" method="post">
+                                    {{ csrf_field() }}
                                     <button type="submit" class="btn btn-primary text-left">Buy now</button>
                                     <button class="btn btn-default text-right" type="button" onclick="window.location.href='{{ route('store.show',$album->id) }}'">More Info</button>
                                 </form>

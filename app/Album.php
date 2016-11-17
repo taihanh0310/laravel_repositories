@@ -34,7 +34,7 @@ class Album extends Model
     public function getAlbumUrl()
     {
         if(!empty($this->attributes['album_art_url'])){
-            return "hha.fpg";
+            return "/images/".$this->attributes['album_art_url'];
         }
         return LContants::DEFAULT_IMAGE;
     }

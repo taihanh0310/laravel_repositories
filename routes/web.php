@@ -33,12 +33,12 @@ Route::post('/manager/{album}', [
     'uses' => 'StoreManagerController@update'
 ]);
 
-Route::post('/addProduct/{productId}', [
+Route::post('/cart/addProduct/{productId}', [
 	'as' => 'cart.add',
 	'uses' => 'CartController@addItem'
 ]);
 
-Route::post('/removeItem/{productId}', [
+Route::get('/cart/removeItem/{productId}', [
 	'as' => 'cart.remove',
 	'uses' => 'CartController@removeItem'
 ]);

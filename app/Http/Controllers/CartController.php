@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
+use App\Cart;
+use App\CartItem;
 
 class CartController extends AdminController
 {
@@ -15,19 +18,19 @@ class CartController extends AdminController
     public function addItem ($productId){
  
         $cart = Cart::where('user_id',Auth::user()->id)->first();
- 
+
         if(!$cart){
             $cart =  new Cart();
             $cart->user_id=Auth::user()->id;
             $cart->save();
         }
- 
+        
         $cartItem  = new Cartitem();
-        $cartItem->product_id=$productId;
+        $cartItem->album_id=$productId;
         $cartItem->cart_id= $cart->id;
         $cartItem->save();
  
-        return redirect('/cart');
+        return redirect(route('cart.list'));
  
     }
  
@@ -41,12 +44,10 @@ class CartController extends AdminController
         }
  
         $items = $cart->cartItems;
-        $total=0;
-        foreach($items as $item){
-            $total+=$item->product->price;
-        }
+        $total= $cart->getTotalPrice();
+        
  
-        return view('cart.view',['items'=>$items,'total'=>$total]);
+        return view('cart.show',['items'=>$items,'total'=>$total]);
     }
  
     public function removeItem($id){

@@ -24,11 +24,12 @@ class Cart extends Model
 
     public function getTotalPrice()
     {
-        $items = $this->cartItems;
         $total= 0;
-
-        foreach($items as $item){
-            $total+=$item->album->price;
+        $items = $this->cartItems;
+        if($items){
+            foreach($items as $item){
+                $total+= ($item->album->price * $item->quantity); 
+            }
         }
 
         return $total;

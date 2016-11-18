@@ -8,8 +8,8 @@
                 <thead>
                 <tr>
                     <th>album</th>
-                    <th></th>
-                    <th class="text-center"></th>
+                    <th>Title</th>
+                    <th class="text-center">Quantity</th>
                     <th class="text-center">Total</th>
                     <th> </th>
                 </tr>
@@ -26,7 +26,7 @@
                             </div></td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
                         </td>
-                        <td class="col-sm-1 col-md-1 text-center"></td>
+                        <td class="col-sm-1 col-md-1 text-center">{{ $item->quantity }}</td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>${{$item->album->price}}</strong></td>
                         <td class="col-sm-1 col-md-1">
                             <a href="{{ route('cart.remove', $item->id) }}"> <button type="button" class="btn btn-danger">

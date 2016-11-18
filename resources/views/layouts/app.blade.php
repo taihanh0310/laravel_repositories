@@ -56,7 +56,7 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li><a href="{{ route('manager.index') }}">Manager Store</a></li>
-                            <li><a href="{{ route('cart.list') }}">Shopping cart</a></li>
+                            <li><a href="{{ route('cart.list') }}">Cart ({{ Auth::user()->getTotalPrice() }})</a></li>
                             
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

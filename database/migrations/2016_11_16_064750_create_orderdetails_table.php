@@ -17,7 +17,7 @@ class CreateOrderdetailsTable extends Migration
             $table->increments('id');
             $table->integer('order_id');
             $table->integer('album_id');
-            $table->integer('quantity')->default(0);
+            $table->integer('quantity')->default(1);
             $table->decimal('unit_price', 10, 2);
             $table->timestamps();
         });

@@ -61,6 +61,6 @@ class CartController extends AdminController
     public function removeItem($id){
  
         CartItem::destroy($id);
-        return redirect('/cart');
+        return redirect(route('cart.list'));
     }
 }

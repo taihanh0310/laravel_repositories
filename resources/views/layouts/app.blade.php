@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Scripts -->
     <script>
@@ -56,7 +57,7 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li><a href="{{ route('manager.index') }}">Manager Store</a></li>
-                            <li><a href="{{ route('cart.list') }}">Cart ({{ Auth::user()->getTotalPrice() }})</a></li>
+                            <li><a href="{{ route('cart.list') }}">Cart (${{ Auth::user()->getTotalPrice() }})</a></li>
                             
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

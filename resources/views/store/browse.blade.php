@@ -25,6 +25,20 @@
                                     <button class="btn btn-default text-right" type="button" onclick="window.location.href='{{ route('store.show',$album->id) }}'">More Info</button>
                                 </form>
                             </p>
+                            <div class="text-center">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('store.show', $album->id)) }}"
+                                   target="_blank">
+                                   <i class="fa fa-facebook-official"></i>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(route('store.show', $album->id)) }}"
+                                   target="_blank">
+                                    <i class="fa fa-twitter-square"></i>
+                                </a>
+                                <a href="https://plus.google.com/share?url={{ urlencode(route('store.show', $album->id)) }}"
+                                   target="_blank">
+                                   <i class="fa fa-google-plus-square"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

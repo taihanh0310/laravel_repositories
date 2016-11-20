@@ -49,3 +49,20 @@ Route::get('/cart',[
 	'uses' => 'CartController@showCart'
 ]);
 
+/**
+ * Checkout route
+ */
+Route::get('/checkout/{cart_id}',[
+	'as' => 'checkout.index',
+	'uses' => 'CheckoutController@index'
+]);
+
+Route::post('/checkout/store', [
+	'as' => 'checkout.store',
+	'uses' => 'CheckoutController@store'
+]);
+
+/**
+ * End checkout route
+ */
+

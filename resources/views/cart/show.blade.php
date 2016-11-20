@@ -49,14 +49,13 @@
                     <td>   </td>
                     <td>   </td>
                     <td>
-                        <a href="/"> <button type="button" class="btn btn-default">
+                        <a href="{{ route('store.index') }}"> <button type="button" class="btn btn-default">
                                 <span class="fa fa-shopping-cart"></span> Continue Shopping
                             </button>
                         </a></td>
                     <td>
-                        <button type="button" class="btn btn-success">
-                            Checkout <span class="fa fa-play"></span>
-                        </button></td>
+                        <a href="{{ route('checkout.index', $cart->id) }}" class="btn btn-success">Checkout <span class="fa fa-play"></span></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

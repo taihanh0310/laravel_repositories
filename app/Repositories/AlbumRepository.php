@@ -140,4 +140,5 @@ class AlbumRepository extends Repository
     public function storeAlbum($data){
         return $this->create($data);
     }
+
 }

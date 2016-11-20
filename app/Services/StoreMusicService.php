@@ -10,6 +10,7 @@ namespace App\Services;
 use App\Repositories\AlbumRepository;
 use App\Repositories\GenreRepository;
 use App\Repositories\ArtistRepository;
+use App\Repositories\UserRepository;
 /**
  * Description of StoreMusicService
  *
@@ -20,15 +21,20 @@ class StoreMusicService
     private $albumRepos;
     private $genreRepos;
     private $artistRepos;
+    private $userRepos;
     //put your code here
     
-    public function __construct(AlbumRepository $al, 
+    public function __construct(
+        AlbumRepository $al, 
         GenreRepository $gen,
-        ArtistRepository $art)
+        ArtistRepository $art,
+        UserRepository $user
+        )
     {
         $this->albumRepos = $al;
         $this->genreRepos = $gen;
         $this->artistRepos = $art;
+        $this->userRepos = $user;
     }
 
     public function albumDetail($id){
@@ -79,5 +85,6 @@ class StoreMusicService
     	$this->genreRepos->dummyData();
     	$this->albumRepos->dummyData();
         $this->artistRepos->dummyData();
+        $this->userRepos->dummyData();
     }
 }

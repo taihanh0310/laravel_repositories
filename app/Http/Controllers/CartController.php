@@ -55,7 +55,7 @@ class CartController extends AdminController
         $total= $cart->getTotalPrice();
         
  
-        return view('cart.show',['items'=>$items,'total'=>$total]);
+        return view('cart.show',['items'=>$items,'total'=>$total,'cart' => $cart]);
     }
  
     public function removeItem($id){

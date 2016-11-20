@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="panel panel-default">
+    <div class="panel panel-danger">
         <div class="panel-heading">
             <h3 class="panel-title">{{ $genreDatas->name }}</h3>
         </div>

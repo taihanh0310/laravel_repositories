@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
 use App\Services\ShoppingCartService;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends AdminController {
 
@@ -15,10 +16,18 @@ class CheckoutController extends AdminController {
     }
 
     public function index($cart_id) {
-        return view('checkout.index');
+        $user = Auth::user();
+        $datas = $this->cartSev->showCartList($user->id);
+        $checkout_date = date('Y-m-d H:i:s', strtotime('now'));
+        $cart = $datas['cart'];
+        $items = $datas['items'];
+        return view('checkout.index', compact('cart','items','checkout_date','user'));
     }
 
     public function store(Request $request) {
+        $data = $request->all();
+        $result = $this->cartSev->addOrder($data);
+        dd($result);
         return view('checkout.completed');
     }
 }

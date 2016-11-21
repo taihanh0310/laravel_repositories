@@ -42,7 +42,7 @@
                     <td>   </td>
                     <td>   </td>
                     <td><h3>Total</h3></td>
-                    <td class="text-right"><h3><strong>${{$total}}</strong></h3></td>
+                    <td class="text-right"><h3><strong>${{$cart->getTotalPrice()}}</strong></h3></td>
                 </tr>
                 <tr>
                     <td>   </td>

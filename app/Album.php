@@ -38,5 +38,4 @@ class Album extends Model
         }
         return LContants::DEFAULT_IMAGE;
     }
-
 }

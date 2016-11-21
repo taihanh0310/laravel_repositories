@@ -96,7 +96,7 @@ abstract class Repository implements RepositoryInterface
      */
     public function findBy($attribute, $value, $columns = array('*')) {
         $this->newQuery()->eagerLoadRelations();
-        return $this->model->where($attribute, '=', $value)->first($columns);
+        return $this->model->where($attribute, '=', $value);;
     }
 
     public function with($relations) {

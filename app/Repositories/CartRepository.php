@@ -25,8 +25,19 @@ class CartRepository extends Repository
     public function removeItem($album_id){}
     public function removeCart($cart_id){}
     public function updateItem($condition){}
+
+    function createNewCart($data){
+        return $this->create($data);
+    }
     public function showCartList($user_id)
     {
-    	
+    	$cart = $this->with('cartItems')->findBy('user_id',$user_id)->first();
+
+        if(!$cart){
+            $this->createNewCart([
+                'user_id' =>$user_id
+            ]);
+        }
+        return $cart;
     }
 }

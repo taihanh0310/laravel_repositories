@@ -7,12 +7,15 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use App\Cart;
 use App\CartItem;
+use App\Services\ShoppingCartService;
 
 class CartController extends AdminController
 {
-    public function __construct()
+    private $shoppingCartSev;
+    public function __construct(ShoppingCartService $cartRep)
     {
         parent::__construct();
+        $this->shoppingCartSev = $cartRep;
     }
     
     public function addItem ($productId){
@@ -43,19 +46,10 @@ class CartController extends AdminController
     }
  
     public function showCart(){
-        $cart = Cart::where('user_id',Auth::user()->id)->first();
- 
-        if(!$cart){
-            $cart =  new Cart();
-            $cart->user_id=Auth::user()->id;
-            $cart->save();
-        }
- 
-        $items = $cart->cartItems;
-        $total= $cart->getTotalPrice();
-        
- 
-        return view('cart.show',['items'=>$items,'total'=>$total,'cart' => $cart]);
+        $datas = $this->shoppingCartSev->showCartList(Auth::user()->id);
+        $cart = $datas['cart'];
+        $items = $datas['items'];
+        return view('cart.show',['cart' => $cart, 'items' => $items]);
     }
  
     public function removeItem($id){

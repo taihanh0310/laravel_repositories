@@ -8,21 +8,22 @@
 
 namespace App\Repositories;
 use App\Repositories\Repository;
-use App\OrderDetail;
+use App\CartItem;
 /**
- * Description of OrderDetailRepository
+ * Description of CartItemRepository
  *
  * @author nthanh
  */
-class OrderDetailRepository extends Repository
+class CartItemRepository extends Repository
 {
     public function model()
     {
-        return OrderDetail::class;
+        return CartItem::class;
     }
-
-    public function addOrderDetail($data)
+    
+    public function showListItem($cart_id)
     {
-    	return $this->create($data);
+        $items = $this->with('album')->findBy('cart_id',$cart_id)->get();
+        return $items;
     }
 }

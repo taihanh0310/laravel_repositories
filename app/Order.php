@@ -24,11 +24,11 @@ class Order extends Model
         'total'
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function details()
+    public function orderDetails()
     {
     	return $this->hasMany(OrderDetail::class, 'order_id', 'id');
     }

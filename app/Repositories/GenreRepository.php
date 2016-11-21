@@ -30,7 +30,7 @@ class GenreRepository extends Repository
 
     public function getBrowse($genre_name)
     {
-        return $this->with('albums')->findBy('name',$genre_name);
+        return $this->with('albums')->findBy('name',$genre_name)->first();
     }
     
     public function dummyData()

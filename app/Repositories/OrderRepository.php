@@ -20,4 +20,13 @@ class OrderRepository extends Repository
     {
         return Order::class;
     }
+
+    public function addOrder($data)
+    {
+    	$result = $this->create($data);
+    	if($result){
+    		return $result->id; 
+    	}
+    	return false;
+    }
 }

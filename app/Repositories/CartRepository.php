@@ -20,4 +20,13 @@ class CartRepository extends Repository
     {
         return Cart::class;
     }
+
+    public function addCart($album_id){}
+    public function removeItem($album_id){}
+    public function removeCart($cart_id){}
+    public function updateItem($condition){}
+    public function showCartList($user_id)
+    {
+    	
+    }
 }

@@ -54,9 +54,21 @@ class ShoppingCartService
 
     public function addOrder($data)
     {
-        $order_id = $this->orderRep->addOrder();
+        $order_id = $this->orderRep->addOrder($data);
         if($order_id){
-            return $this->addOrderDetail($order_id, $data['cart_id']);
+            if($this->addOrderDetail($order_id, $data['cart_id'])){
+                if($this->removeCart($data['cart_id'])){
+                    $data['cart_id'];
+                }
+            }
+        }
+        return false;
+    }
+
+    public function removeCart($cart_id)
+    {
+        if($this->cartRep->removeCart($cart_id) && $this->cartItemRep->deleteCartItemWithCart($cart_id)){
+            return true;
         }
         return false;
     }
@@ -64,16 +76,18 @@ class ShoppingCartService
     public function addOrderDetail($order_id, $cart_id)
     {
         $rawData = $this->cartItemRep->showListItem($cart_id);
+        $count = 0;
         foreach ($rawData as $item) {
-            $data[] = [
+            $count = $count + 1;
+            $data = [
                         'order_id' => $order_id,
                         'album_id' => $item->album_id,
                         'quantity' => $item->quantity,
                         'unit_price' => $item->album->price
                     ];
+            $result[] = $this->orderDetailRep->addOrderDetail($data);
         }
-        $result = $this->orderDetailRep->addOrderDetail($data);
-        if($result){
+        if(count($result) == $count){
             return $order_id;
         }
         return false;

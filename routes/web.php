@@ -65,4 +65,3 @@ Route::post('/checkout/store', [
 /**
  * End checkout route
  */
-

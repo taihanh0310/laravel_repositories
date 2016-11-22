@@ -23,7 +23,10 @@ class CartRepository extends Repository
 
     public function addCart($album_id){}
     public function removeItem($album_id){}
-    public function removeCart($cart_id){}
+    public function removeCart($cart_id)
+    {
+        $this->delete($cart_id);
+    }
     public function updateItem($condition){}
 
     function createNewCart($data){

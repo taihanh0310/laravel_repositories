@@ -27,7 +27,6 @@ class CheckoutController extends AdminController {
     public function store(Request $request) {
         $data = $request->all();
         $result = $this->cartSev->addOrder($data);
-        dd($result);
-        return view('checkout.completed');
+        return view('checkout.completed', compact('result'));
     }
 }

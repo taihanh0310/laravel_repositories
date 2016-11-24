@@ -19,6 +19,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/mail', 'HomeController@mail');
+
 Route::resource('store', 'StoreController');
 
 Route::get('/store/browse/{genre}', [

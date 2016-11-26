@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+{{$genre}}
 <div class="container">
     <div class="row">
         <div class="col-md-12">

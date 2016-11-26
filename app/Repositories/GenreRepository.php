@@ -27,6 +27,10 @@ class GenreRepository extends Repository
         // Eagar loading
         // return $this->with('albums')->all();
     }
+    
+    public function test(){
+        return "test";
+    }
 
     public function getBrowse($genre_name)
     {

@@ -28,7 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect(route('store.index'));
+        // return redirect(route('store.index'));
+        return View('home');
     }
 
     public function mail()
